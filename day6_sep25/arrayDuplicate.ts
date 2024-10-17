@@ -10,8 +10,9 @@
 
 function removeDuplicates(array: number[]): number[] {
     const uniqueArray: number[] = [];
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] != array[i - 1]) {
+    
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] != array[i - 1]) {  
             uniqueArray.push(array[i]);
         }
     }
