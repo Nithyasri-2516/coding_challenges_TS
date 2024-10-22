@@ -18,7 +18,6 @@ function groupAlphabets(string:string[]): {[key:string]: string[]}
     }
     return group;
 }
-
 const res = groupAlphabets(['Nithya','nithu','pandi','kavi','kavya']);
 console.log(res);
 
