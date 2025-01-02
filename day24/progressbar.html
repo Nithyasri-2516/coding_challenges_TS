@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    .progress-container {
+      width: 100%;
+      max-width: 300px;
+      background: #f3f3f3;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 20px;
+      background: #4caf50;
+      transition: width 0.2s ease;
+    }
+
+    .upload-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Upload File</h1>
+    <input type="file" id="fileInput">
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p id="uploadStatus"></p>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const progressBar = document.getElementById("progressBar");
+    const uploadStatus = document.getElementById("uploadStatus");
+
+    fileInput.addEventListener("change", () => {
+      progressBar.style.width = "0%";
+      uploadStatus.textContent = "Uploading...";
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        progressBar.style.width = progress + "%";
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          uploadStatus.textContent = "Upload Complete!";
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>
