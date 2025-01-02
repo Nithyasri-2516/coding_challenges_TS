@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinner Example</title>
+  <style>
+
+    .spinner {
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+   
+    .btn {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn" onclick="showSpinner()">Submit</button>
+  <div id="spinner-container" style="display: none;" class="spinner"></div>
+
+  <script>
+   
+    function showSpinner() {
+      document.getElementById('spinner-container').style.display = 'block';
+      document.querySelector('.btn').style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('spinner-container').style.display = 'none';
+        alert('Submission successful!');
+      }, 3000); 
+    }
+  </script>
+</body>
+</html>
