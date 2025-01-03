@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Toggle</title>
+  <style>
+   
+    :root {
+      --background-color: white;
+      --text-color: black;
+      --button-background: #ddd;
+      --button-text: black;
+    }
+
+    /* Dark theme colors */
+    body.dark-theme {
+      --background-color: #121212;
+      --text-color: white;
+      --button-background: #333;
+      --button-text: white;
+    }
+
+    /* Apply the variables */
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: var(--button-background);
+      color: var(--button-text);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    button:hover {
+      background-color: #888;
+    }
+
+    /* Center the content */
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle">Toggle Theme</button>
+  <div class="content">
+    <h1>Welcome to the Theme Toggle Demo!</h1>
+  </div>
+
+  <script>
+    // Check for stored theme preference in localStorage
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+    }
+
+    const themeToggleButton = document.getElementById('theme-toggle');
+
+    themeToggleButton.addEventListener('click', () => {
+      
+      document.body.classList.toggle('dark-theme');
+      
+      // Save the current theme to localStorage
+      const newTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+</body>
+</html>
